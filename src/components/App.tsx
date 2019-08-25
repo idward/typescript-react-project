@@ -6,9 +6,6 @@ interface IAppProps {
     message: string
 }
 
-const a = [1,
-    2, 3]
-
 const App = ({ message }: IAppProps) => {
     return (
         <div className="container">
