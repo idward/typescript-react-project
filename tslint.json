@@ -8,7 +8,7 @@
   "jsRules": {},
   "rulesDirectory": ["tslint-plugin-prettier"],
   "rules": {
-    "prettier": [true, null, { "editorconfig": false }],
+    "prettier": true,
     "interface-name": false,
     "ordered-imports": false,
     "import-name": false,
