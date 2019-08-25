@@ -1,33 +1,37 @@
-const path = require("path");
-const TSLintPlugin = require("tslint-webpack-plugin");
+const path = require('path');
+const TSLintPlugin = require('tslint-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  devtool: "source-map",
-  entry: "./src/index.tsx",
+  mode: 'development',
+  devtool: 'source-map',
+  entry: './src/index.tsx',
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: "awesome-typescript-loader",
-        exclude: /node_modules/
+        loader: 'awesome-typescript-loader',
+        exclude: /node_modules/,
+        options: {
+          errorsAsWarnings: true,
+        },
       },
       {
         test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
-      }
-    ]
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
+    ],
   },
   resolve: {
-    extensions: [".js", ".json", ".ts", ".tsx"]
+    extensions: ['.js', '.json', '.ts', '.tsx'],
   },
   plugins: [
     new TSLintPlugin({
-      files: ["./src/**/*.tsx"]
-    })
-  ]
+      files: ['./src/**/*.{ts,tsx}'],
+      warningsAsError: true,
+    }),
+  ],
 };
